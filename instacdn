@@ -1,0 +1,27 @@
+<?php
+if (isset($_GET["url"])) {
+    $fname = $_GET["url"];
+
+    $options = [
+        "http" => [
+            "method" => "GET",
+            "header" => "X-RapidAPI-Key: 0dbd38fc8dmsh7004146a64a1761p17226ejsnceab381ff0ef\r\n" .
+                        "X-RapidAPI-Host: instagram-downloader-download-instagram-videos-stories.p.rapidapi.com\r\n"
+        ]
+    ];
+
+    $context = stream_context_create($options);
+
+    $response = file_get_contents("https://instagram-downloader-download-instagram-videos-stories.p.rapidapi.com/index?url={$fname}", false, $context);
+
+    $result = json_decode($response, true);
+
+    if ($result) {
+        $mediaLink = $result["media"];
+        echo "<script>window.location.href = '{$mediaLink}';</script>";
+    } else {
+        echo "Error fetching data.";
+    }
+}
+?>
+
