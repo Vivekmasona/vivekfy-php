@@ -2,7 +2,7 @@
 // Check if the 'url' parameter is present
 if (isset($_GET['url'])) {
     // URL of the JSON server
-    $jsonServerUrl = 'https://vivekmasona.000webhostapp.com/smvid/server?url=' . urlencode($_GET['url']);
+    $jsonServerUrl = 'vivekfy.wuaze.com/video/server?url=' . urlencode($_GET['url']);
 
     // Fetch JSON data from the server
     $jsonData = file_get_contents($jsonServerUrl);
